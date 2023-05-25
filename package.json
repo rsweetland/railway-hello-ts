@@ -4,11 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/app.js",
+    "start": "node -r newrelic dist/app.js",
     "build": "yarn tsc -p tsconfig.json",
     "build:watch": "yarn tsc -w -p tsconfig.json",
-    "dev": "nodemon --exec ts-node dist/app.js",
-    "docker": "docker build -t railway-hello-ts . && railway run docker run -it railway-hello-ts"
+    "dev": "nodemon -r newrelic  --exec ts-node dist/app.js",
+    "docker": "docker build -t railway-hello-ts . && railway run docker run -e PORT -e REDIS_URL -it railway-hello-ts"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
