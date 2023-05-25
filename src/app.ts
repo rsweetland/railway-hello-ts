@@ -4,7 +4,7 @@ let app = express();
 
 app.get("/", async (req: express.Request, res: express.Response) => {
   const client = createClient({
-    url: process.env.REDIS_CONN_STRING,
+    url: process.env.REDIS_URL,
   });
 
   client.on("error", (err: any) => console.log("Redis Client Error", err));
